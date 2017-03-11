@@ -10,26 +10,33 @@
 // logout won't accept an argument. receiveErrors will take an array. All other action creators accept a user object. On logout success dispatch receiveCurrentUser(null) to remove the current user.
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_LOGOUT_SUCCESS = 'RECEIVE_LOGOUT_SUCCESS';
 import * as APIUtil from '../util/ession_api_util';
 
 export const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
   currentUser
-})
+});
 
 export const receiveErrors = (errors) => ({
   type: RECEIVE_ERRORS,
   errors
-})
+});
 
-export const login = (user) => (dispatch) => ({
-  
-})
+export const receiveLogoutSuccess = () => ({
+  type: RECEIVE_LOGOUT_SUCCESS
+});
 
-export const login = (user) => (
-  type: RECEIVE_CURRENT_USER,
+export const login = (user) => (dispatch) => (
+  APIUtil.login(user).then(currentUser => dispatch(receiveCurrentUser(currentUser)))
+);
 
-)
+export const signup = (user) => (dispatch) => (
+  APIUtil.signup(user).then(currentUser => dispatch(receiveCurrentUser(currentUser)))
+);
+export const logout = () => (dispatch) => (
+  APIUtil.logout().then(logoutSuccess => dispatch(receiveLogoutSuccess(logoutSuccess)))
+);
 
 
 // signup: should make an AJAX request that creates a new user.

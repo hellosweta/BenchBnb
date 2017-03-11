@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   ReactDOM.render(<h1>Welcome to BenchBnB</h1>, root);
   window.signUp = APIUtil.signUp;
-  window.signIn = APIUtil.signIn;
+  window.logIn = APIUtil.logIn;
   window.logOut = APIUtil.logOut;
 
 });

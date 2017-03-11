@@ -1,26 +1,29 @@
-export const signUp = (username, password) => (
+export const signUp = (user) => (
   $.ajax({
     method: 'POST',
     url: `api/users`,
-    data: {
-      user: {
-        username: username,
-        password: password
-      }
-    }
+    data: { user }
+    // data: {
+    //   user: {
+    //     username: username,
+    //     password: password WHY not this
+
+    //   }
+    // }
   })
 );
 
-export const signIn = (username, password) => (
+export const logIn = (user) => (
   $.ajax({
     method: 'POST',
     url: `api/session`,
-    data: {
-      user: {
-        username: username,
-        password: password
-      }
-    }
+    data: { user }
+    // data: {
+    //   user: {
+    //     username: username,
+    //     password: password
+    //   }
+    // }
   })
 );
 
